@@ -1,0 +1,36 @@
+.clickable-row {
+    cursor: pointer;
+}
+
+.table-wrapper-scroll-y {
+    display: block;
+    max-height: 1000px;
+    overflow-y: auto;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+}
+
+.table-wrapper-scroll-x {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+tr {
+    line-height: 15px;
+    min-height: 15px;
+    height: 15px;
+}
+
+td {
+    wdith: 75px;
+    padding: 10px;
+}
+
+th {
+    height: 10px;
+    padding: 10px;
+}
+
+.clickable-row {
+    cursor: pointer;
+}

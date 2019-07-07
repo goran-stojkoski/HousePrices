@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>House Prices</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    {#    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='custom.css') }}">#}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='custom.css') }}">
+
+</head>
+<body>
+<br>
+<div class="container">
+    <form method="POST">
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text">Location</span>
+            </div>
+            <input type="text" aria-label="Suburb" class="form-control" placeholder="Suburb" name="suburb">
+            <select class="custom-select" id="inputGroupSelect01" name="state">
+                <option selected>State or Territory</option>
+                <option value="vic">VIC</option>
+                <option value="nsw">NSW</option>
+                <option value="qld">QLD</option>
+                <option value="sa">SA</option>
+                <option value="wa">WA</option>
+                <option value="nt">NT</option>
+                <option value="tas">TAS</option>
+                <option value="act">ACT</option>
+            </select>
+            <div class="input-group-append">
+                <input type="submit" class="btn btn-outline-secondary" id="button-addon2">
+            </div>
+        </div>
+        <br>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <label class="input-group-text" for="inputGroupSelect01">Filters</label>
+            </div>
+            <select class="custom-select" id="inputGroupSelect01" name="proptype">
+                <option selected>Property Type</option>
+                <option value="all">All Types</option>
+                <option value="house">House</option>
+                <option value="apartment">Apartment</option>
+                <option value="unit">Unit</option>
+                <option value="townhosue">Townhouse</option>
+            </select>
+            <select class="custom-select" id="inputGroupSelect01" name="minbed">
+                <option selected>Min Beds</option>
+                <option value="1">One Bed</option>
+                <option value="2">Two Beds</option>
+                <option value="3">Three Beds</option>
+                <option value="4">Four Beds</option>
+            </select>
+            <select class="custom-select" id="inputGroupSelect01" name="maxbed">
+                <option selected>Max Beds</option>
+                <option value="1">One Bed</option>
+                <option value="2">Two Beds</option>
+                <option value="3">Three Beds</option>
+                <option value="4">Four Beds</option>
+                <option value="4+">Four+</option>
+            </select>
+        </div>
+    </form>
+</div>
+<br>
+<div class="container">
+        {% if ppties %}
+    <h2> Displaying prices for: {{ suburb }}, {{ state.upper() }}</h2>
+    <table class="table-bordered table-striped table-hover table-wrapper-scroll-y table-wrapper-scroll-x" >
+        <th>Address</th>
+        <th>Property Type</th>
+        <th>Bedrooms</th>
+        <th>Bathrooms</th>
+        <th>Car Spaces</th>
+        <th>Land Size (m<sup>2</sup>)</th>
+        <th>Building Size (m<sup>2</sup>)</th>
+        <th>Agent</th>
+        <th>Sold Price</th>
+        <th style="width: 500px">Date Sold</th>
+        <th>Last Sold Price</th>
+        <th>Last Sold Date</th>
+            {% for ppty in ppties %}
+                <tr class="clickable-row">
+                <td> {{ ppty.address }} </td>
+                <td> {{ ppty.type }} </td>
+                <td> {{ ppty.bedrooms }}</td>
+                <td> {{ ppty.bathrooms }}</td>
+                <td> {{ ppty.car_spaces }}</td>
+                <td> {{ ppty.land_size }}</td>
+                <td> {{ ppty.building_size }}</td>
+                <td> {{ ppty.agent }}</td>
+                <td> {{ ppty.sold_price }}</td>
+                <td> {{ ppty.sold_date }}</td>
+                <td> {{ ppty.last_sold_price }}</td>
+                <td> {{ ppty.last_sold_date }}</td>
+            {% endfor %}
+        {% endif %}
+
+        </tr>
+    </table>
+</div>
+</body>
+</html>
